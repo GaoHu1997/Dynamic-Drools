@@ -287,6 +287,6 @@ public Object fireRule() {
     Student student = new Student();
     student.setName("张三");
     student.setAge(23);
-    return droolsUtil.fireRule("test", null, student);
+    return droolsManager.fireRule("test", null, student);
 }
 ```

@@ -8,9 +8,9 @@ spring:
     username: root
     password: root
 
-# mybatis-plus相关配置
+# mybatis-plus 相关配置
 mybatis-plus:
-  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  # xml 扫描
   mapper-locations: classpath:mapper/*.xml
   configuration:
     # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射

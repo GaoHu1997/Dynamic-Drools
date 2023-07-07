@@ -1,6 +1,5 @@
 package com.gohu.drools.controller;
 
-import com.gohu.drools.utils.DroolsManager;
 import com.gohu.drools.entity.DroolsRule;
 import com.gohu.drools.service.DroolsRuleService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +19,6 @@ public class DroolsRuleController {
 
     @Resource
     private DroolsRuleService droolsRuleService;
-    @Resource
-    private DroolsManager droolsManager;
 
     @PostConstruct
     public void reload() {

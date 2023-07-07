@@ -12,7 +12,7 @@
     <artifactId>Dynamic-Drools</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Dynamic-Drools</name>
-    <description>预计 Drools + DB 实现的动态规则引擎</description>
+    <description>基于 Drools + DB 实现的动态规则引擎</description>
     <properties>
         <java.version>11</java.version>
         <drools.version>7.73.0.Final</drools.version>
