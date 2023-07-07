@@ -1,0 +1,39 @@
+package rules;
+
+// 导包
+import com.ovit.drools.entity.Student
+
+// 对象类型为包装类型时，在一个规则中改变了 global 的值，那么只针对当前规则有效，对其他规则中的 global 不会有影响。
+// 对象类型为集合类型或 JavaBean 时，在一个规则中改变了 global 的值，对 java 代码和所有规则都有效
+global java.util.Map map
+
+rule "规则1"
+// 指定规则的执行优先级，取值类型为 Integer。数值越大越优先执行。
+// 每个规则都有一个默认的执行顺序，如果不设置 salience 属性，规则体的执行顺序为由上到下。
+salience 9
+// 具有相同 activation-group 的规则只能有一个规则被触发
+// 设置 agenda-group 来控制规则的执行，只有获取焦点的组中的规则才会被触发
+activation-group "mygroup"
+// 只有当前系统时间大于等于设置的时间或者日期规则才有可能触发
+date-effective "2023-10-01 10:00"
+// 指定当前规则不可用，当前规则无论是否匹配成功都不会执行
+enabled false
+// 条件
+when
+    $s:Student(age >= 18)
+// 满足条件执行逻辑
+then
+    // 一般使用 fact 对象携带回返回结果
+    map.put($s.getName(),"成年了");
+    $s.setMsg("成年了");
+    // 立即终止后面所有规则执行
+    drools.halt();
+end
+
+rule "规则2"
+activation-group "mygroup"
+when
+    $s:Student(age < 18)
+then
+    map.put($s.getName(),"还未成年");
+end
